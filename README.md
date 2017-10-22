@@ -1,4 +1,6 @@
-# Lamp
+# Lamp 
+
+![](https://user-images.githubusercontent.com/2480569/31863899-b5b2c60e-b754-11e7-95b8-946b5547ac92.png) 
 
 Control [Lead Energy](https://www.lead-energy.com/) Flexible White LED panel. Set brightness and color temperature.
 
