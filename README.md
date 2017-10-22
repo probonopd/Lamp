@@ -1,6 +1,6 @@
 # Lamp
 
-Control Lead Energy Flexible White LED panel. Set brightness and color temperature.
+Control [Lead Energy](https://www.lead-energy.com/) Flexible White LED panel. Set brightness and color temperature.
 
 ## Compatible hardware
 
