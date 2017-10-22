@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Lamp
+Comment=Control Lead Energy Flexible White LED panel 
+Exec=AppRun
+Icon=lamp
+Type=Application
+Categories=Utilities;

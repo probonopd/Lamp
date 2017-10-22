@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import gi # sudo apt-get install python-gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+import signal
+
+import lamp
+
+class Scale(Gtk.Window):
+    def __init__(self):
+        Gtk.Window.__init__(self, title="Lamp")
+        self.set_default_size(300, 150)
+        self.connect("destroy", Gtk.main_quit)
+        self.lamp = lamp.Lamp("192.168.0.15")
+
+        grid = Gtk.Grid()
+        self.add(grid)
+
+	# Color temperature
+        adjustment = Gtk.Adjustment(50, 0, 100, 1, 10, 0)
+        self.scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adjustment)
+        self.scale.set_value_pos(Gtk.PositionType.TOP)
+        self.scale.set_vexpand(True)
+        self.scale.set_hexpand(True)
+        self.scale.add_mark(0, Gtk.PositionType.BOTTOM, "Cold")
+        self.scale.add_mark(50, Gtk.PositionType.BOTTOM, "Neutral")
+        self.scale.add_mark(100, Gtk.PositionType.BOTTOM, "Warm")
+        self.scale.set_digits(0)
+        self.scale.connect("value-changed", self.on_color_changed)
+        grid.attach(self.scale, 0, 1, 2, 1)
+
+	# Brightness
+        adjustment2 = Gtk.Adjustment(100, 0, 100, 1, 10, 0)
+        self.scale2 = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adjustment2)
+        self.scale2.set_value_pos(Gtk.PositionType.TOP)
+        self.scale2.set_vexpand(True)
+        self.scale2.set_hexpand(True)
+        self.scale2.add_mark(0, Gtk.PositionType.BOTTOM, "Dark")
+        self.scale2.add_mark(100, Gtk.PositionType.BOTTOM, "Bright")
+        self.scale2.set_digits(0)
+        self.scale2.connect("value-changed", self.on_brightness_changed)
+        grid.attach(self.scale2, 0, 0, 2, 1)
+
+    def on_color_changed(self, sender):
+        print("Selected color temperature %i" % int(sender.get_value()))
+        self.lamp.set_temperature(int(sender.get_value()))
+
+    def on_brightness_changed(self, sender):
+        print("Selected brightness %i" % int(sender.get_value()))
+        self.lamp.set_brightness(int(sender.get_value()))
+
+window = Scale()
+window.show_all()
+
+signal.signal(signal.SIGINT, signal.SIG_DFL) # Make it killable
+
+Gtk.main()
