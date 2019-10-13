@@ -4,6 +4,10 @@
 
 Control [Lead Energy](https://www.lead-energy.com/) Flexible White LED panel. Set brightness and color temperature.
 
+The company seems no be liquidated and no longer active:
+
+> HRB 80303: LEAD energy AG, Düsseldorf, Zollhof 30, 40221 Düsseldorf. Die Gesellschaft ist infolge Eröffnung des Insolvenzverfahrens kraft Gesetzes aufgelöst. 
+
 ## Compatible hardware
 
 Tested with Lead Energy LED PANEL PDW. Seems to be built by OEM Sunricher. Sunricher has even put the app into the Play Store: https://play.google.com/store/apps/details?id=com.sunricher.leadenergy
